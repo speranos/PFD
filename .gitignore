@@ -1,3 +1,4 @@
 .python-version
 .venv
 uv*
+.DS_Store
