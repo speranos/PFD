@@ -2,3 +2,5 @@
 .venv
 uv*
 .DS_Store
+CLAUDE.md
+*/__pycache__
