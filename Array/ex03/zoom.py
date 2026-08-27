@@ -3,14 +3,14 @@ from load_image import ft_load
 import numpy as np
 
 
-def ft_zoom(pic: np.ndarray):
+def ft_zoom(pic: np.ndarray) -> np.ndarray:
     "Zoom into the center of the image."
 
-    height, width = pic.shape
+    height, width, c = pic.shape
     start_y = (height - 400) // 2
     start_x = (width - 400) // 2
 
-    zoomed = pic[start_y:start_y + 400, start_x:start_x + 400]
+    zoomed = pic[start_y:start_y + 400, start_x:start_x + 400, 1]
     print("New shape after slicing: ", zoomed.shape)
     print(zoomed)
 
