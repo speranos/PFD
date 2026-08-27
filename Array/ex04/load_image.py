@@ -8,6 +8,12 @@ def ft_load(path: str) -> np.ndarray:
     """
     img = Image.open(path)
     img_array = np.array(img)
-    print("The shape of the image is: ", img_array.shape)
-    print(img_array)
-    return img_array
+
+    height, width, c = img_array.shape
+    x_start = (width - 400) // 2
+    y_start = (height - 400) // 2
+
+    zoom = img_array[y_start:y_start + 400, x_start:x_start + 400, 1]
+    print("The shape of the image is: ", zoom.shape)
+    print(zoom)
+    return zoom
