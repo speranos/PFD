@@ -4,3 +4,4 @@ uv*
 .DS_Store
 CLAUDE.md
 __pycache__/
+en.subject*
