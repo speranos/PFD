@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 
 def load(path: str) -> pd.DataFrame | None:

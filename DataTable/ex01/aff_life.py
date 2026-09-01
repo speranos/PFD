@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 
 
+
 def aff_life(path: str) -> None:
     """
     Load a CSV file and plot the life expectancy data.
@@ -12,16 +13,24 @@ def aff_life(path: str) -> None:
         path (str): The path to the CSV file.
     """
     try:
-        df: np.ndarray = load(path).all()
-        print("Loading dataset of dimensions ", df)
-        if df is not None:
-            # years = df.columns[1:]
-            # print("years  > = ", years)
-            raw, col = np.where(df == "Morocco")
-            ages = df[raw:, col:].astype(float)
-            print("ages  > = ", ages)
-            print("raw  > = ", raw)
-            print("data loc  > = ", df[raw])
+        df = load(path)
+        ma = df[df["country"] == "Morocco"]
+        print("Raw filter data: > ")
+        print(ma)
+        ma = ma.drop(columns="country")
+        years = ma.squeeze().index.astype(int)
+        ages = ma.squeeze().values.astype(float)
+
+        fig, ax = plt.subplots()
+        ax.plot(years, ages)
+        plt.title("Morocco Life Expectancy Projections")
+        plt.xlabel("Year")
+        plt.ylabel("Life Expectancy")
+        plt.show()
+        # ages = ma.values.astype(float)
+        # print(ages)
+        # print(years)
+
     except Exception as e:
         print(f"An error occurred: {e}")
 
