@@ -8,19 +8,19 @@ class King(Baratheon, Lannister):
 
     def set_eyes(self, eyes):
         """Set the eye color of the King"""
-        self._eyes = eyes
+        self.__dict__["eyes"] = eyes
 
     def get_eyes(self):
         """Get the eye color of the King"""
-        return self._eyes
+        return self.__dict__["eyes"]
 
     def set_hairs(self, hairs):
         """Set the hair color of the King"""
-        self._hairs = hairs
+        self.__dict__["hairs"] = hairs
 
     def get_hairs(self):
         """Get the hair color of the King"""
-        return self._hairs
+        return self.__dict__["hairs"]
 
     hairs = property(get_hairs, set_hairs)
     eyes = property(get_eyes, set_eyes)
