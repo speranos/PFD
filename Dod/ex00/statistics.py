@@ -14,6 +14,11 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
             print("ERROR")
         return
 
+    for arg in args:
+        if not isinstance(arg, (int, float)):
+            print("ERROR")
+            return
+
     if "mean" in values:
         mean = sum(args) / len(args)
         print(f"mean: {mean}")
@@ -49,7 +54,7 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
 
 def main():
     # ft_statistics(test="dd")
-    ft_statistics(1, 42, 360, 11, 64, toto="mean", tutu="median", tata="quartile")
+    ft_statistics(1, 42, 360, 11, 64, "test", toto="mean", tutu="median", tata="quartile")
     print("-----")
     ft_statistics(5, 75, 450, 18, 597, 27474, 48575, hello="std", world="var")
     print("-----")
