@@ -2,12 +2,19 @@ def give_bmi(height: list[int | float],
              weight: list[int | float]) -> list[int | float]:
     """This function takes two lists of height and weight values, and returns
     a list of BMI values calculated from them."""
+
     if (len(height) != len(weight)
-            or type(height) is not list[int | float]
-            or type(weight) is not list[int | float]):
+            or type(height) is not list
+            or type(weight) is not list):
         raise ValueError(
             "Height and weight lists must be of the same length and same type."
         )
+    values = height + weight
+    if all(isinstance(value, (int, float)) for value in values):
+        pass
+    else:
+        raise ValueError("Not INT Or FLOAT")
+
     bmi: list[int | float] = []
     for h, w in zip(height, weight):
         if h <= 0:
@@ -28,8 +35,11 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
 
 def main():
     try:
-        height = [2.71, 1.15, -1.0, 1.75]
-        weight = [165.3, 38.4, 72.6, 58.9]
+        height = [2.71, 1.15]
+        weight = [165.3, 38.4]
+        print("H - type = ", type(height))
+        print("W - type = ", type(weight))
+
         bmi = give_bmi(height, weight)
         print(bmi, type(bmi))
         print(apply_limit(bmi, 26))
