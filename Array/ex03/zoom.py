@@ -1,6 +1,8 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from load_image import ft_load
 import numpy as np
+matplotlib.use("Agg")
 
 
 def ft_zoom(pic: np.ndarray) -> np.ndarray:
@@ -15,7 +17,7 @@ def ft_zoom(pic: np.ndarray) -> np.ndarray:
     print(zoomed)
 
     plt.imshow(zoomed, cmap='gray')
-    plt.show()
+    plt.savefig("zoomed.png")
     return zoomed
 
 

@@ -1,6 +1,8 @@
+import matplotlib
 import numpy as np
 from load_image import ft_load
 import matplotlib.pyplot as plt
+matplotlib.use("Agg")
 
 
 def _ft_transpose(pic: np.ndarray) -> np.ndarray:
@@ -20,7 +22,7 @@ def ft_rotate(pic: np.ndarray) -> np.ndarray:
     print("New shape after Transpose: ", rt.shape)
     print(rt)
     plt.imshow(rt, cmap='gray')
-    plt.show()
+    plt.savefig("rotate.png")
     return rt
 
 

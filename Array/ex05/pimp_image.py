@@ -1,6 +1,8 @@
+import matplotlib
 from array import array
 from load_image import ft_load
 import matplotlib.pyplot as plt
+matplotlib.use("Agg")
 
 
 def ft_green(array) -> array:
@@ -11,7 +13,7 @@ def ft_green(array) -> array:
     cp[:, :, 0] = 0  # Set red channel to 0
     cp[:, :, 2] = 0  # Set blue channel to 0
     plt.imshow(cp)
-    plt.show()
+    plt.savefig("green.png")
     return cp
 
 
@@ -23,7 +25,7 @@ def ft_red(array) -> array:
     cp[:, :, 1] = 0  # Set green channel to 0
     cp[:, :, 2] = 0  # Set blue channel to 0
     plt.imshow(cp)
-    plt.show()
+    plt.savefig("red.png")
     return cp
 
 
@@ -37,7 +39,7 @@ def ft_blue(array) -> array:
     print("New shape:", cp.shape)
     print(cp)
     plt.imshow(cp)
-    plt.show()
+    plt.savefig("blue.png")
     return cp
 
 
@@ -48,7 +50,7 @@ def ft_invert(array) -> array:
     cp = array.copy()
     cp = 255 - cp  # Invert colors
     plt.imshow(cp)
-    plt.show()
+    plt.savefig("invert.png")
     return cp
 
 
@@ -60,7 +62,7 @@ def ft_grey(array) -> array:
     t = cp.sum(axis=2)  # Sum of RGB channels
     cp = t // 3
     plt.imshow(cp, cmap='gray')
-    plt.show()
+    plt.savefig("grey.png")
     return cp
 
 
