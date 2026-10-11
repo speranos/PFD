@@ -13,6 +13,8 @@ def load(path: str) -> pd.DataFrame | None:
         or None if the file is not found.
     """
     try:
+        if not path.endswith(".csv"):
+            raise ValueError("The file must be a CSV file.")
         df = pd.read_csv(path)
         print("Loading dataset of dimensions ", df.shape)
         return df

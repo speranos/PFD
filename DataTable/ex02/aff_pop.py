@@ -1,6 +1,8 @@
+import matplotlib
 from matplotlib.ticker import FuncFormatter, MultipleLocator
 import matplotlib.pyplot as plt
 from load_csv import load
+matplotlib.use("Agg")
 
 
 def aff_life(path: str) -> None:
@@ -14,10 +16,6 @@ def aff_life(path: str) -> None:
         df = load(path)
         ma = df[df["country"] == "Morocco"]
         fr = df[df["country"] == "France"]
-        print("MA Raw filter data: > ")
-        print(ma)
-        print("FR Raw filter data: > ")
-        print(fr)
         ma = ma.drop(columns="country")
         ma = ma.loc[:, "1800":"2050"]
         fr = fr.drop(columns="country")
@@ -44,7 +42,7 @@ def aff_life(path: str) -> None:
         ax.set_xlabel("Year")
         ax.set_ylabel("Population")
         ax.legend(loc="lower right")
-        plt.show()
+        plt.savefig("population_projections.png")
 
     except Exception as e:
         print(f"An error occurred: {e}")

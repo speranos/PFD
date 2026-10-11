@@ -1,5 +1,7 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from load_csv import load
+matplotlib.use("Agg")
 
 
 def aff_life(path: str) -> None:
@@ -12,8 +14,6 @@ def aff_life(path: str) -> None:
     try:
         df = load(path)
         ma = df[df["country"] == "Morocco"]
-        print("Raw filter data: > ")
-        print(ma)
         ma = ma.drop(columns="country")
         years = ma.squeeze().index.astype(int)
         ages = ma.squeeze().values.astype(float)
@@ -23,10 +23,7 @@ def aff_life(path: str) -> None:
         plt.title("Morocco Life Expectancy Projections")
         plt.xlabel("Year")
         plt.ylabel("Life Expectancy")
-        plt.show()
-        # ages = ma.values.astype(float)
-        # print(ages)
-        # print(years)
+        plt.savefig("morocco_life_expectancy.png")
 
     except Exception as e:
         print(f"An error occurred: {e}")

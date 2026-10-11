@@ -9,6 +9,9 @@ def _k(v, pos):
 
 
 def projection_life(life_ex, gdp):
+    """
+    Plot the life expectancy against GDP for the year 1900.
+    """
     try:
         df_l = load(life_ex).set_index("country")["1900"]
         df_g = load(gdp).set_index("country")["1900"]
@@ -23,9 +26,7 @@ def projection_life(life_ex, gdp):
         plt.xlabel("Gross domestic product")
         plt.ylabel("Life Expectancy")
         plt.title("1900")
-        plt.show()
-        print("DataFrame with life expectancy and GDP:")
-        print(df)
+        plt.savefig("projection_life.png")
     except Exception as e:
         print(f"An error occurred: {e}")
 
